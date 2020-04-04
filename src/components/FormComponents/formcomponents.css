@@ -1,0 +1,15 @@
+ul {
+    list-style: none;
+}
+.contentToUser{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	margin-top:20px;
+}
+.displayFavDessert{
+	border:1px solid grey;
+	padding:4px;
+	margin:5px;
+}

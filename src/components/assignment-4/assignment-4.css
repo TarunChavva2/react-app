@@ -1,0 +1,231 @@
+*{
+	border:1px doted red;
+}
+.image{
+	width:100%;
+	height:180px;
+	object-fit: cover;
+	border-radius:5px 5px 0px 0px;
+}
+/*.countries-dashboard{*/
+	/*display:flex;*/
+	/*width:100vw;*/
+	/*flex-wrap:wrap;*/
+	/*justify-content:space-around;*/
+	/*background-color:#e6e6e6;*/
+/*}*/
+.country-cards{
+	display:flex;
+	/*width:210px;*/
+	flex-direction:column;
+	justify-content:space-between;
+	border-radius:5px;
+	/*margin:25px 5px 25px 5px;*/
+	background-color: white;
+	box-shadow: 1px 1px 10px lightgrey;
+}
+.country-name{
+	font-weight:600;
+	padding-left:8px;
+	font-family:Courier, monospace;
+	font-size:22px;
+}
+.country-details{
+	font-size:18px;
+	font-family:Courier, monospace;
+	margin:8px;
+}
+.country-details-section{
+	padding:10px;
+}
+.side-headdings{
+	font-weight:600;
+}
+.filter-div{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	box-shadow:0px 5px 5px lightgrey inset;
+	height:100px;
+	background-color:#e6e6e6;
+}
+.select-region{
+	height:40px;
+	border:none;
+	margin-right:30px;
+	font-size:15px;
+	font-weight: 300;
+	background-color:white;
+}
+.search-div{
+	display:flex;
+	align-items:center;
+	background-color: white;
+	width:280px;
+	justify-content:center;
+	border-radius:5px;
+	box-shadow: 1px 3px 8px lightgrey;
+	margin-left:30px;
+}
+.search-box{
+	height:40px;
+	font-size:18px;
+	border:none;
+	font-weight:300;
+	padding-left:0px;
+}
+.search-icon{
+	height:45px;
+	font-size:15px;
+	width:30px;
+	padding-right: 0px;
+	color:lightgrey;
+}
+.individual-country-background-color{
+	background-color:#e6e6e6;
+	width:100vw;
+}
+.individual-country-details-div{
+	display:flex;
+	height:100vh;
+	width:100%;
+	align-items:flex-start;
+	justify-content:space-around;
+	flex-wrap:wrap;
+	font-family:Courier, monospace;
+}
+.individual-country-button{
+	font-size:15px;
+	padding:2px;
+	border-radius:5px;
+	height:40px;
+	width:100px;
+	box-shadow: 1px 1px 8px lightgrey;
+	border:none;
+	margin:2px;
+	background-color:white;
+}
+.individual-country-name-content{
+	display:flex;
+	flex-direction:column;
+	width:50%;
+}
+.individual-country-headding{
+	font-size:25px;
+	font-weight:400;
+}
+.individual-country-content{
+	display:flex;
+  flex-wrap:wrap;
+}
+.border-countries-div{
+	margin-top:-2px;
+}
+.individual-country-single-data{
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+	width:45%;
+}
+
+.country-details-image{
+	height:250px;
+	width:500px;
+	margin:0px 0px 0px -20px;
+}
+.p-tag{
+	display:flex;
+	margin:5px 0px 5px 0px;
+	flex-wrap:wrap;
+}
+.back-button{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	border:none;
+	background-color:white;
+	border-radius:5px;
+	width:80px;
+	margin:30px;
+	box-shadow:1px 5px 8px lightgrey;
+	height:40px;
+}
+/*-------Preloader-----*/
+.preloader-2 {
+	display:flex;
+	justify-content:space-around;
+  margin: 100px auto 0;
+  width: 100px;
+  height: 12px;
+}
+.preloader-1 {
+  margin: 120px auto 0;
+}
+.name {
+  color: black;
+  margin: 5px 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.preloader-1 .line {
+  width: 3px;
+  height: 15px;
+  background: black;
+  margin: 1px;
+  display: inline-block;
+  letter-spacing: 1px;
+  animation: opacity-1 500ms infinite ease-in-out;
+}
+
+.preloader-2 .line {
+  width: 3px;
+  height: 15px;
+  background: black;
+  margin: 1px;
+  display: inline-block;
+  letter-spacing: 1px;
+  animation: opacity-2 500ms infinite ease-in-out;
+}
+
+.preloader-1 .line-1, .preloader-2 .line-1 { animation-delay: 800ms; }
+.preloader-1 .line-2, .preloader-2 .line-2 { animation-delay: 600ms; }
+.preloader-1 .line-3, .preloader-2 .line-3 { animation-delay: 400ms; }
+.preloader-1 .line-5, .preloader-2 .line-5 { animation-delay: 800ms; }
+.preloader-1 .line-4, .preloader-2 .line-4 { animation-delay: 600ms; }
+.preloader-1 .line-6, .preloader-2 .line-6 { animation-delay: 200ms; }
+.preloader-1 .line-7, .preloader-2 .line-7 { animation-delay: 400ms; }
+.preloader-1 .line-8, .preloader-2 .line-8 { animation-delay: 600ms; }
+.preloader-1 .line-9, .preloader-2 .line-9 { animation-delay: 800ms; }
+.preloader-1 .line-10, .preloader-2 .line-10 { animation-delay: 400ms; }
+
+@keyframes opacity-1 { 
+  0% { 
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }  
+}
+@keyframes opacity-2 { 
+  0% { 
+    opacity: 1;
+    height: 10px;
+    
+  }
+  50% { 
+    opacity: 0;
+    height: 20px;
+    
+  }
+  100% { 
+    opacity: 1;
+    height: 15px;
+
+  }  
+}
