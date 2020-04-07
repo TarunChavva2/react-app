@@ -1,11 +1,25 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { Headerdiv, Headdingtext, Themebutton } from './assignment-4-tailwind.js';
 class Header extends React.Component {
+
 	render() {
+		const { selectedTheme } = this.props;
+		const { onChangeTheme } = this.props;
+		const light = css({
+			backgroundColor: '#fff',
+			color: 'black'
+		})
+		const dark = css({
+			backgroundColor: '#2b3945',
+			color: 'white'
+		})
+		const color = (selectedTheme === 'Light-Mode') ? light : dark;
 		return (
-			<Headerdiv>
+			<Headerdiv css={color}>
 				<Headdingtext>Where in the World ?</Headdingtext>
-				<Themebutton onClick={this.props.onChangeTheme}>Change Theme</Themebutton>
+				<Themebutton onClick={onChangeTheme}>{selectedTheme}</Themebutton>
 			</Headerdiv>
 		);
 	}

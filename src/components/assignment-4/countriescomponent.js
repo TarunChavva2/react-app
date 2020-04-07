@@ -1,7 +1,7 @@
-/*global fetch*/
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React from 'react';
 import './assignment-4.css';
-import { Header } from './header.js';
 import Countrycard from './countrycard.js';
 import { Filterbar } from './countriesfilterbar.js';
 class Countriesdashboard extends React.Component {
@@ -49,22 +49,14 @@ class Countriesdashboard extends React.Component {
 			this.setState({ filteredCountries: selectedCountryName });
 		}
 	}
-	onChangeTheme = () => {
-		if (parseInt(this.state.theme.id) === 0) {
-			this.setState({ theme: this.theme.dark });
-		}
-		else {
-			this.setState({ theme: this.theme.light });
-		}
-	}
 	render() {
 		const { filteredCountries } = this.state;
+		const { selectedTheme } = this.props;
 		return (
 			<div>
-			 <Header/>
-			 <Filterbar backgroundColor={this.state.theme} filterCountriesByRegion={this.filterCountriesByRegion} filterCountriesByName={this.filterCountriesByName}/>
-			<Countrycard backgroundColor={this.state.theme} countries={filteredCountries}/>
-		  </div>
+				<Filterbar filterCountriesByRegion={this.filterCountriesByRegion} filterCountriesByName={this.filterCountriesByName} selectedTheme={selectedTheme} />
+				<Countrycard countries={filteredCountries} selectedTheme={selectedTheme} />
+			</div>
 		);
 	}
 }

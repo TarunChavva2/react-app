@@ -1,40 +1,48 @@
 import React from "react";
 import './App.css';
-import Apphome from './components/home.js';
+import Home from './components/home.js';
 import { Todos } from "./components/react-todos/index.js";
 import Countrydetailscard from './components/assignment-4/country-details-card.js';
+import { Header } from './components/assignment-4/header.js';
 import FormComponents from "./components/FormComponents/FormComponents.js";
+import Emojigame from "./components/Emojigame/index/index.js";
 import { Countriesdashboard } from "./components/assignment-4/countriescomponent.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    themeOption: "light-mode",
+    themeOption: "Light-Mode",
   }
   onChangeTheme = (event) => {
-    this.state.themeOption === "light-mode" ? this.setState({ themeOption: "dark-theme" }) : this.setState({ themeOption: "light-theme" });
+    let theme = (this.state.themeOption === "Light-Mode") ? "Dark-Mode" : "Light-Mode";
+    this.setState({ themeOption: theme });
   }
   render() {
-    const { themeOption } = this.state;
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-        <Route path="/todos">
+          <Route path="/todos">
             <Todos />
           </Route>
           <Route path="/formcomponents">
             <FormComponents />
           </Route>
+          <Route path="/emojigame">
+            <Emojigame />
+          </Route>
           <Route path="/countrieslist">
-            <Countriesdashboard />
+            <Header selectedTheme={this.state.themeOption} onChangeTheme={this.onChangeTheme} />
+            <Countriesdashboard selectedTheme={this.state.themeOption} onChangeTheme={this.onChangeTheme} />
           </Route>
           <Route exact path="/navigate_to_country_details/:countryCode">
-            <Countrydetailscard />
+            <Header selectedTheme={this.state.themeOption} onChangeTheme={this.onChangeTheme} />
+            <Countrydetailscard selectedTheme={this.state.themeOption} onChangeTheme={this.onChangeTheme} />
           </Route>
-          <Route path="/" component={Apphome}/>
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     )
   }
 }
 export default App;
+
