@@ -4,6 +4,8 @@ import React from 'react';
 import './assignment-4.css';
 import Countrycard from './countrycard.js';
 import { Filterbar } from './countriesfilterbar.js';
+import { observer } from 'mobx-react';
+@observer
 class Countriesdashboard extends React.Component {
 	constructor() {
 		super();

@@ -9,14 +9,17 @@ export default function Home() {
             <Link to="/home.js" className="home-page-nav-li">Home</Link>
           </li>
           <li>
+            <Link to="/todos" className="home-page-nav-li">Todos</Link>
+          </li>
+          <li>
             <Link to="/formcomponents" className="home-page-nav-li">Form Components</Link>
           </li>
           <li>
             <Link to="/countrieslist" className="home-page-nav-li">Countries</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/emojigame" className="home-page-nav-li">EmojiGame</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

@@ -37,7 +37,7 @@ class Countrydetailscard extends React.Component {
 			backgroundColor: '#2b3945',
 			color: 'white'
 		})
-		const color = (selectedTheme === 'Light-Mode') ? light : dark;
+		const color = (selectedTheme === 'light') ? light : dark;
 		return (
 			<div className="individual-country-background-color" css={color}>
 				<button className="back-button" onClick={this.goBackHome} css={color}>{/*<IoIosArrowRoundBack/>*/}Back</button> {

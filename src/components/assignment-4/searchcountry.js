@@ -17,7 +17,7 @@ class Searchcountry extends React.Component {
 			backgroundColor: '#2b3945',
 			color: 'white'
 		})
-		const color = (selectedTheme === 'Light-Mode') ? light : dark;
+		const color = (selectedTheme === 'light') ? light : dark;
 
 		return (
 			<Searchboxdiv css={color} >
