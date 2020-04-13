@@ -1,7 +1,8 @@
 import React from 'react';
-import './todos.css';
 import { observer } from 'mobx-react';
 import { observable, toJS } from 'mobx';
+
+import './todos.css';
 let todosOfUser = [];
 @observer class Todos extends React.Component {
   @observable todos = [];
@@ -82,45 +83,46 @@ let todosOfUser = [];
     const todoListItems = this.todos.map((eachEl) => {
       let eachElIndex = (this.todos).indexOf(eachEl);
       return (
-        <li key={(eachEl.id).toString()} className="items todo-li-items">
-          <i className={this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co" : "fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)}></i>
-          <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough" : "text"} defaultValue={eachEl.task} />
-          <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
-        </li>
+        <li key={(eachEl.id).toString()
+        } className="items todo-li-items" >
+          <i className={this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co" : "fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)
+          }> </i>
+          < input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough" : "text"} defaultValue={eachEl.task} />
+          <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}> </i>
+          < /li>
       );
     });
-    return (todoListItems);
+return (todoListItems);
   }
-  render() {
-    console.log(toJS(this.todos));
-    return (
-      <div className="todo-list-body-container">
-        <div className="main-todo-conatiner">
-          <div className="todo-list">
-            <h1 className="main-heading">Todos</h1>
-          </div>
-          <div className="todo-list-container">
-            <input className="adding-elements" type="text" placeholder="What need to be Done...!"
-              onKeyDown={this.handleEnterKey}
-            />
-            <ul className="todo-ul-tag">
-              {this.renderTodoList()}
-            </ul>
-            <div className={this.todosInList ? "footer-todo-list footer-display" : "footer-todo-list footer-none"}>
-              <span>{this.todosLeft()} Todos left</span>
-              <div>
-                <button className="filter-buttons" onClick={this.allTodos}>All</button>
-                <button className="filter-buttons" onClick={this.activeTodos}>Active</button>
-                <button className="filter-buttons" onClick={this.completedTodos}>Completed</button>
+render() {
+            console.log(toJS(this.todos));
+  return (
+          <div className="todo-list-body-container" >
+            <div className="main-todo-conatiner" >
+              <div className="todo-list" >
+                <h1 className="main-heading" > Todos </h1>
               </div>
-              <button className="filter-buttons filter-clear-completed-buttons" onClick={this.clearCompletedTodos}>Clear completed</button>
-            </div>
-          </div>
-        </div>
+              < div className="todo-list-container" >
+                <input className="adding-elements" type="text" placeholder="What need to be Done...!"
+                  onKeyDown={this.handleEnterKey} />
+                <ul className="todo-ul-tag">
+                  {this.renderTodoList()}
+                </ul>
+                <div className={this.todosInList ? "footer-todo-list footer-display" : "footer-todo-list footer-none"} >
+                  <span>{this.todosLeft()} Todos left < /span>
+          <div>
+                      <button className="filter-buttons" onClick={this.allTodos} > All < /button>
+            <button className="filter-buttons" onClick={this.activeTodos} > Active < /button>
+              <button className="filter-buttons" onClick={this.completedTodos} > Completed < /button>
+                </div>
+                          <button className="filter-buttons filter-clear-completed-buttons" onClick={this.clearCompletedTodos} > Clear completed < /button>
+                  </div>
+                  </div>
+                  </div>
 
-      </div>
+                    </div>
     )
-  }
+}
 }
 
-export { Todos };
+export {Todos};

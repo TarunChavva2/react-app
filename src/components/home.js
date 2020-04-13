@@ -17,9 +17,12 @@ export default function Home() {
           <li>
             <Link to="/countrieslist" className="home-page-nav-li">Countries</Link>
           </li>
-          {/* <li>
-            <Link to="/emojigame" className="home-page-nav-li">EmojiGame</Link>
-          </li> */}
+          <li>
+            <Link to="/mobxtodo" className="home-page-nav-li">MobX Todo</Link>
+          </li>
+          <li>
+            <Link to="/page1" className="home-page-nav-li">Page1</Link>
+          </li>
         </ul>
       </nav>
     </div>
