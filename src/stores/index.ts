@@ -3,9 +3,9 @@ import React from 'react';
 import { observable, toJS } from 'mobx';
 
 class TodoApp {
-   @observable todos = [];
-   @observable todosInList = false;
-   @observable clearCompletedButton = false;
+  @observable todos = [];
+  @observable todosInList = false;
+  @observable clearCompletedButton = false;
 
 
 }
