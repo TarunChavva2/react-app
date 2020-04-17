@@ -14,8 +14,7 @@ import { Countriesdashboard } from "./components/assignment-4/countriescomponent
 import themeStore from './stores/themestore';
 import Page from './components/Page1';
 
-@observer
-class App extends React.Component {
+@observer class App extends React.Component {
   getCurrentTheme = () => {
     return themeStore.themeOption;
   }
@@ -57,36 +56,6 @@ class App extends React.Component {
 export default App;
 
 
-
-
-
-
-
-
-// import React from "react";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// import HomePage from "./components/HomePage";
-// import Page1 from "./components/Page1";
-
-// import "./App.css";
-
-// const App = () => {
-//   return (
-//     <Router basename={process.env.PUBLIC_URL}>
-//       <Switch>
-//         <Route exact path="/page-1">
-//           <Page1 />
-//         </Route>
-//         <Route path="/">
-//           <HomePage />
-//         </Route>
-//       </Switch>
-//     </Router>
-//   );
-// };
-
-// export default App;
 
 
 
