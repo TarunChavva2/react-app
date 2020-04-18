@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import counterStore from '../../stores/CounterStore'
 
-type Props = {
-  initialCount: number
-}
-
 @observer
-class CounterPage extends Component<Props> {
+class CounterPage extends Component {
   functionCalling
 
   handleIncrement = () => {

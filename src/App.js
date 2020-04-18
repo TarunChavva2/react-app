@@ -12,7 +12,8 @@ import { Header } from './components/assignment-4/header.js';
 import FormComponents from "./components/FormComponents/FormComponents.js";
 import { Countriesdashboard } from "./components/assignment-4/countriescomponent.js";
 import themeStore from './stores/themestore';
-import Page from './components/Page1';
+// import Page from './components/Page1';
+import GridMemoryGame from "./components/Gridgame";
 
 @observer class App extends React.Component {
   getCurrentTheme = () => {
@@ -33,8 +34,8 @@ import Page from './components/Page1';
           <Route path="/formcomponents">
             <FormComponents />
           </Route>
-          <Route path="/page1">
-            <Page />
+          <Route path="/GridMemoryGame">
+            <GridMemoryGame />
           </Route>
           <Route path="/mobxtodo">
             <TodoApp />

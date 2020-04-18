@@ -3,12 +3,10 @@ import { observable } from 'mobx';
 
 class Cell {
     @observable isHidden;
-    constructor() {
-        this.id = 0;
-        this.isHidden = false
+    constructor(object) {
+        this.id = object.id;
+        this.isHidden = object.isHidden;
     }
-
 }
 
-const cell = new Cell();
-export default cell;
+export default Cell;

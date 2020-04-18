@@ -4,20 +4,14 @@ import { observable, toJS } from 'mobx';
 
 import './todos.css';
 
-type todoTaskType = {
-  id: number
-  task: string
-  isCompleted: boolean
-}
-
-let todosOfUser: Array<todoTaskType> = [];
+// let todosOfUser: Array<todoTaskType> = [];
 
 @observer class Todos extends React.Component {
-  @observable todos: Array<todoTaskType> = [];
+  @observable todos = [];
   @observable todosInList = false;
   @observable clearCompletedButton = false;
 
-  completedTask = (idOfTodo: number): void => {
+  completedTask = (idOfTodo) => {
     todosOfUser[idOfTodo].isCompleted ? todosOfUser[idOfTodo].isCompleted = false : todosOfUser[idOfTodo].isCompleted = true;
     this.todos = todosOfUser;
     if (todosOfUser.length === 0)
