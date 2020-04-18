@@ -4,7 +4,7 @@ import { observable, toJS } from 'mobx';
 
 import './todos.css';
 
-// let todosOfUser: Array<todoTaskType> = [];
+let todosOfUser = [];
 
 @observer class Todos extends React.Component {
   @observable todos = [];
@@ -96,7 +96,6 @@ import './todos.css';
     return (todoListItems);
   }
   render() {
-    console.log(toJS(this.todos));
     return (
       <div className="todo-list-body-container" >
         <div className="main-todo-conatiner" >
