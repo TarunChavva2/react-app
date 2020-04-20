@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { toJS } from "mobx";
+// import { toJS } from "mobx";
 
 import { GameFieldDiv } from "./Gamefieldstyle";
 
@@ -9,7 +9,6 @@ import gameStore from "../../../stores/GridGameStore/GameStore";
 
 @observer
 class GameField extends React.Component {
-
     renderCellsList = () => {
         return gameStore.currentLevelGridCells.map((eachCell) => {
             return <Cell eachCell={eachCell} key={eachCell.id} />
@@ -17,7 +16,6 @@ class GameField extends React.Component {
     }
 
     render() {
-        console.log(toJS(gameStore.currentLevelGridCells))
         return (
             <GameFieldDiv>
                 {this.renderCellsList()}

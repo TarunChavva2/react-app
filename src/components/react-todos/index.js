@@ -9,17 +9,26 @@ let todosOfUser = [];
 @observer class Todos extends React.Component {
   @observable todos = [];
   @observable todosInList = false;
-  @observable clearCompletedButton = false;
+  @observable clearcompletedButton = false;
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  async fetchData() {
+    const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const n = await data.json()
+    todosOfUser = n
+  }
 
   completedTask = (idOfTodo) => {
-    todosOfUser[idOfTodo].isCompleted ? todosOfUser[idOfTodo].isCompleted = false : todosOfUser[idOfTodo].isCompleted = true;
+    todosOfUser[idOfTodo].completed ? todosOfUser[idOfTodo].completed = false : todosOfUser[idOfTodo].completed = true;
     this.todos = todosOfUser;
     if (todosOfUser.length === 0)
       this.todosInList = false;
   }
 
   removeTask = (indexOfTodo) => {
-    todosOfUser.splice(indexOfTodo, 1);
     this.todos = todosOfUser;
     if (todosOfUser.length === 0)
       this.todosInList = false;
@@ -30,8 +39,8 @@ let todosOfUser = [];
       if (event.target.value !== "") {
         const todoTask = {
           id: (this.todos).length + 1,
-          task: event.target.value,
-          isCompleted: false,
+          title: event.target.value,
+          completed: false,
         };
         todosOfUser.push(todoTask);
         this.todos = todosOfUser;
@@ -49,7 +58,7 @@ let todosOfUser = [];
 
   activeTodos = () => {
     const activeTodosList = todosOfUser.filter((eachEl) => {
-      return (eachEl.isCompleted !== true);
+      return (eachEl.completed !== true);
     });
     this.todos = activeTodosList;
   }
@@ -57,7 +66,7 @@ let todosOfUser = [];
   todosLeft = () => {
     let todosCount = 0;
     todosOfUser.forEach((eachEl) => {
-      if (eachEl.isCompleted !== true)
+      if (eachEl.completed !== true)
         todosCount++;
     });
     return (todosCount);
@@ -65,14 +74,14 @@ let todosOfUser = [];
 
   completedTodos = () => {
     const completedTodosList = todosOfUser.filter((eachEl) => {
-      return (eachEl.isCompleted !== false);
+      return (eachEl.completed !== false);
     });
     this.todos = completedTodosList;
   }
 
-  clearCompletedTodos = () => {
+  clearcompletedTodos = () => {
     todosOfUser = todosOfUser.filter((eachEl) => {
-      return (eachEl.isCompleted !== true);
+      return (eachEl.completed !== true);
     });
     this.todos = todosOfUser;
 
@@ -84,11 +93,11 @@ let todosOfUser = [];
     const todoListItems = this.todos.map((eachEl) => {
       let eachElIndex = (this.todos).indexOf(eachEl);
       return (
-        <li key={(eachEl.id).toString()
-        } className="items todo-li-items" >
-          <i className={this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co" : "fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)
+        <li key={(eachEl.id)}
+          className="items todo-li-items" >
+          <i className={this.todos[eachElIndex].completed ? "fa fa-check-circle co" : "fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)
           }> </i>
-          < input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough" : "text"} defaultValue={eachEl.task} />
+          < input type="text" className={this.todos[eachElIndex].completed ? "text lineThrough" : "text"} defaultValue={eachEl.title} />
           <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}> </i>
         </li>
       );
@@ -113,16 +122,22 @@ let todosOfUser = [];
               <div>
                 <button className="filter-buttons" onClick={this.allTodos} > All </button>
                 <button className="filter-buttons" onClick={this.activeTodos} > Active </button>
-                <button className="filter-buttons" onClick={this.completedTodos} > Completed </button>
+                <button className="filter-buttons" onClick={this.completedTodos} > completed </button>
               </div>
-              <button className="filter-buttons filter-clear-completed-buttons" onClick={this.clearCompletedTodos} > Clear completed </button>
+              <button className="filter-buttons filter-clear-completed-buttons" onClick={this.clearcompletedTodos} > Clear completed </button>
             </div>
           </div>
         </div>
-
       </div>
     )
   }
 }
 
 export { Todos };
+
+
+
+
+// fetch("https://restcountries.eu/rest/v2/all")
+// .then(result => result.json())
+// .then(this.getCountries);

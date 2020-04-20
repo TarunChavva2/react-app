@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from "mobx-react";
+import { reaction } from "mobx";
 
 import gameStore from "../../stores/GridGameStore/GameStore";
 
@@ -19,12 +20,13 @@ class GridMemoryGame extends React.Component {
     resetGameIfAnsweredTooLate = () => {
         const { isGameCompleted, onPlayAgainClick, level } = gameStore;
         clearInterval(this.intervalId);
-        this.intervalId = setInterval(() => { onPlayAgainClick() }, (level + 3) * 2000)
+        if (isGameCompleted) return;
+        else this.intervalId = setInterval(onPlayAgainClick, (level + 3) * 2000);
     }
 
     componentWillUnmount() {
         clearInterval(this.intervalId);
-        this.resettingReaction()
+        this.resettingReaction();
     }
 
     constructor(props) {
