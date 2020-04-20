@@ -21,7 +21,10 @@ export default function Home() {
             <Link to="/mobxtodo" className="home-page-nav-li">MobX Todo</Link>
           </li>
           <li>
-            <Link to="/GridMemoryGame" className="home-page-nav-li">Page1</Link>
+            <Link to="/GridMemoryGame" className="home-page-nav-li">GridGame</Link>
+          </li>
+          <li>
+            <Link to="/commoncomponent" className="home-page-nav-li">Common</Link>
           </li>
         </ul>
       </nav>
