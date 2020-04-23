@@ -1,17 +1,32 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
-// import todoApp from '../../stores/TodoStore';
+import todoStore from "../../stores/TodoStore";
 
-import { Headding, Tododiv, Userinput } from './mobxtodosstyles.js'
+import { Headding, Tododiv, Userinputtag } from './mobxtodosstyles.js';
+import DisplayTodoList from "./DisplayTodoList/index";
 
 @observer
 class TodoApp extends React.Component {
+    handleOnclick = (event) => {
+        const { addingTodo } = todoStore;
+        if (event.keyCode === 13) {
+            if (event.target.value !== "") {
+                const userEnteredTodo = event.target.value;
+                addingTodo(userEnteredTodo);
+                event.target.value = "";
+            }
+            else {
+                alert("Please Enter Valied Todo....");
+            }
+        }
+    }
     render() {
         return (
             <Tododiv>
                 <Headding>Todos</Headding>
-                <input type="text" style={{ "border": "1px solid grey" }} />
+                <Userinputtag type="text" type="text" placeholder="What You Want to do ?..." onKeyDown={this.handleOnclick} />
+                <DisplayTodoList todosList={todoStore.todos} deleteTodo={todoStore.deleteTodo} />
             </Tododiv>
         )
     }

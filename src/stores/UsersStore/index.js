@@ -1,6 +1,11 @@
 import { observable, action } from "mobx";
 import { API_INITIAL, API_FETCHING, API_FAILED, API_SUCCESS } from "@ib/api-constants";
 
+import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
+import { create } from 'apisauce';
+import { networkCallWithApisauce } from "../../utils/APIUtils";
+import { apiMethods } from "../../constants/APIConstants";
+
 class UserStore {
     @observable getUsersApiStatus;
     @observable getUsersApiError;
@@ -20,23 +25,27 @@ class UserStore {
     }
     @action.bound
     setUsersApiResponse(usersResponse) {
-        this.getUsersApiStatus = API_SUCCESS
         this.users = usersResponse.map((user) => user.name)
     }
     @action.bound
     setApiError(error) {
         this.getUsersApiError = error
-        this.getUsersApiStatus = API_FAILED
         console.log(error);
-
+    }
+    @action.bound
+    setUsersApiStatus(apiStatus) {
+        this.getUsersApiStatus = apiStatus;
     }
     @action.bound
     getUsersApi() {
         this.getUsersApiStatus = API_FETCHING;
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((res) => res.json())
-            .then(this.setUsersApiResponse)
-            .catch(this.setApiError)
+        const api = create({
+            baseURL: "https://jsonplaceholder.typicode.com"
+        })
+        const userPromise = networkCallWithApisauce(api, "users/", {}, apiMethods.get)
+        return bindPromiseWithOnSuccess(userPromise)
+            .to(this.setUsersApiStatus, this.setUsersApiResponse)
+            .catch(this.getUsersApiError);
     }
 }
 
