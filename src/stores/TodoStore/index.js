@@ -27,5 +27,4 @@ class TodoStore {
     }
 }
 
-const todoStore = new TodoStore;
-export default todoStore;
+export default TodoStore;
