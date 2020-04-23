@@ -11,7 +11,6 @@ class DisplayTodoList extends Component {
         const { todosList: todos, deleteTodo } = this.props;
         return todos.map((item) => <DisplayTodosContent key={item.id} content={item} deleteTodo={deleteTodo} />);
     }
-
     render() {
         return (
             <EachTodoDiv>
