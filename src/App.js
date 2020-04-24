@@ -15,6 +15,7 @@ import themeStore from './stores/themestore';
 import UsersPage from "./components/Userspage";
 import GridMemoryGame from "./components/Gridgame";
 import stores from "./stores";
+import SignInPage from "./Authentication/components/SignInForm";
 
 @observer class App extends React.Component {
   getCurrentTheme = () => {
@@ -31,21 +32,16 @@ import stores from "./stores";
         <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path="/counter-page" component={CounterPage} />
-            <Route path="/todos">
-              <Todos />
-            </Route>
-            <Route path="/formcomponents">
+            <Route path="/todos" component={Todos} />
+            <Route path="/sign-in" component={SignInPage} />
+            {/* <Route path="/formcomponents">
               <FormComponents />
-            </Route>
-            <Route path="/GridMemoryGame">
+            </Route> */}
+            {/* <Route path="/GridMemoryGame">
               <GridMemoryGame />
-            </Route>
-            <Route path="/mobxtodo">
-              <TodoApp />
-            </Route>
-            <Route path="/commoncomponent">
-              <UsersPage />
-            </Route>
+            </Route> */}
+            <Route path="/mobxtodo" component={TodoApp} />
+            <Route path="/commoncomponent" component={UsersPage} />
             <Route path="/countrieslist">
               <Header selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
               <Countriesdashboard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
@@ -57,7 +53,7 @@ import stores from "./stores";
             <Route path="/" component={Home} />
           </Switch>
         </Router>
-      </Provider>
+      </Provider >
     )
   }
 }
