@@ -1,5 +1,5 @@
 import React from "react";
-import { observer } from "mobx-react";
+import { observer, Provider } from "mobx-react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import './App.css';
@@ -12,9 +12,9 @@ import { Header } from './components/assignment-4/header.js';
 import FormComponents from "./components/FormComponents/FormComponents.js";
 import { Countriesdashboard } from "./components/assignment-4/countriescomponent.js";
 import themeStore from './stores/themestore';
-import UsersPage from "./components/Userspage"
-// import Page from './components/Page1';
+import UsersPage from "./components/Userspage";
 import GridMemoryGame from "./components/Gridgame";
+import stores from "./stores";
 
 @observer class App extends React.Component {
   getCurrentTheme = () => {
@@ -25,36 +25,39 @@ import GridMemoryGame from "./components/Gridgame";
     themeStore.setCurrentTheme(themeStore.themeOption)
   }
   render() {
+    console.log(stores, "rthryhyr");
     return (
-      <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route path="/counter-page" component={CounterPage} />
-          <Route path="/todos">
-            <Todos />
-          </Route>
-          <Route path="/formcomponents">
-            <FormComponents />
-          </Route>
-          <Route path="/GridMemoryGame">
-            <GridMemoryGame />
-          </Route>
-          <Route path="/mobxtodo">
-            <TodoApp />
-          </Route>
-          <Route path="/commoncomponent">
-            <UsersPage />
-          </Route>
-          <Route path="/countrieslist">
-            <Header selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
-            <Countriesdashboard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
-          </Route>
-          <Route exact path="/navigate_to_country_details/:countryCode">
-            <Header selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
-            <Countrydetailscard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
-          </Route>
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
+      <Provider {...stores}>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Switch>
+            <Route path="/counter-page" component={CounterPage} />
+            <Route path="/todos">
+              <Todos />
+            </Route>
+            <Route path="/formcomponents">
+              <FormComponents />
+            </Route>
+            <Route path="/GridMemoryGame">
+              <GridMemoryGame />
+            </Route>
+            <Route path="/mobxtodo">
+              <TodoApp />
+            </Route>
+            <Route path="/commoncomponent">
+              <UsersPage />
+            </Route>
+            <Route path="/countrieslist">
+              <Header selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
+              <Countriesdashboard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
+            </Route>
+            <Route exact path="/navigate_to_country_details/:countryCode">
+              <Header selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
+              <Countrydetailscard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
+            </Route>
+            <Route path="/" component={Home} />
+          </Switch>
+        </Router>
+      </Provider>
     )
   }
 }

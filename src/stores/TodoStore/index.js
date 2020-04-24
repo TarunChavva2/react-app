@@ -1,10 +1,15 @@
+import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
+import { API_INITIAL } from "@ib/api-constants";
 import { observable, action } from "mobx";
 
 import Todomodel from "../models/TodoModels";
 
 class TodoStore {
+    @observable getTodoListAPIStatus = API_INITIAL;
+    @observable getTodoListAPIError = null;
     @observable todos;
-    constructor() {
+    constructor(todosAPIService) {
+        this.todosAPIService = todosAPIService;
         this.todos = [];
     }
     @action.bound
@@ -24,6 +29,38 @@ class TodoStore {
     @action.bound
     clearCompletedTodos() {
 
+    }
+    @action.bound
+    setGetTodoListAPIStatus(status) {
+        this.getTodoListAPIStatus = status;
+    }
+
+    @action.bound
+    setGetTodoListAPIError(error) {
+        this.getTodoListAPIError = error;
+        console.log(error);
+    }
+
+    @action.bound
+    setGetTodosAPIResponse(response) {
+        response.map(todo => {
+            const todoObject = {
+                id: todo.id,
+                title: todo.title,
+                completed: todo.completed
+            }
+            const todoModel = new Todomodel(todoObject);
+            this.todos.push(todoModel);
+        }
+        )
+    }
+
+    @action.bound
+    getTodoList() {
+        const getTodosPromise = this.todosAPIService.getTodoApi();
+        return bindPromiseWithOnSuccess(getTodosPromise)
+            .to(this.setGetTodoListAPIStatus, this.setGetTodosAPIResponse)
+            .catch(this.setGetTodoListAPIError);
     }
 }
 
