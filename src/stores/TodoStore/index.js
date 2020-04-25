@@ -26,10 +26,10 @@ class TodoStore {
     deleteTodo(todo) {
         this.todos.splice(this.todos.indexOf(todo), 1);
     }
-    @action.bound
-    clearCompletedTodos() {
+    // @action.bound
+    // clearCompletedTodos() {
 
-    }
+    // }
     @action.bound
     setGetTodoListAPIStatus(status) {
         this.getTodoListAPIStatus = status;
@@ -38,7 +38,6 @@ class TodoStore {
     @action.bound
     setGetTodoListAPIError(error) {
         this.getTodoListAPIError = error;
-        console.log(error);
     }
 
     @action.bound

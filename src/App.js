@@ -26,7 +26,6 @@ import SignInPage from "./Authentication/components/SignInForm";
     themeStore.setCurrentTheme(themeStore.themeOption)
   }
   render() {
-    console.log(stores, "rthryhyr");
     return (
       <Provider {...stores}>
         <Router basename={process.env.PUBLIC_URL}>
