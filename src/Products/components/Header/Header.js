@@ -3,19 +3,17 @@ import { observer } from "mobx-react";
 
 import { productStore } from "../../stores";
 
-import { HeaderDiv, ItemsSortDropDown } from "./HeaderStyle";
+import ProductSort from "../Productsort";
+
+import { HeaderDiv } from "./HeaderStyle";
 
 @observer
 class Header extends Component {
     render() {
         return (
             <HeaderDiv>
-                <p>Count of products</p>
-                <ItemsSortDropDown>
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
-                </ItemsSortDropDown>
+                <p>{productStore.productsList.length} Product(s) Found.</p>
+                <ProductSort />
             </HeaderDiv>
         )
     }

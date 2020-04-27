@@ -1,12 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react";
+import { toJS } from "mobx";
 
 import { productStore } from "../../stores";
 
-import { ProductsPageScreen } from "./ProductPageStyles";
-
+import ProductList from "../ProductList";
 import Header from "../Header";
 import SizeFilter from "../SizeFilter";
+
+import { ProductsPageScreen, ProductsDisplayContainer, SideBar } from "./ProductPageStyles";
 
 @observer
 class ProductsPage extends React.Component {
@@ -19,8 +21,13 @@ class ProductsPage extends React.Component {
     render() {
         return (
             <ProductsPageScreen>
-                <SizeFilter />
-                <Header />
+                <SideBar>
+                    <SizeFilter />
+                </SideBar>
+                <ProductsDisplayContainer>
+                    <Header />
+                    <ProductList productsList={productStore.productsList} />
+                </ProductsDisplayContainer>
             </ProductsPageScreen>
         )
     }
