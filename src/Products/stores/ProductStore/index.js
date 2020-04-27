@@ -7,6 +7,7 @@ class ProductStore {
     @observable getProductListAPIError = null;
     @observable sizeFilter;
     @observable sortBy;
+    @observable productsList = [];
     productsAPIService;
     constructor(productService) {
         this.productsAPIService = productService;
@@ -15,7 +16,8 @@ class ProductStore {
     }
     @action.bound
     setProductListResponse(response) {
-        console.log(response);
+        this.productsList = response;
+        console.log("products", this.productsList)
     }
     @action.bound
     setGetProductListAPIError(error) {
@@ -29,7 +31,7 @@ class ProductStore {
     getProductList() {
         const productListPromise = this.productsAPIService.getProductsAPI();
         return bindPromiseWithOnSuccess(productListPromise)
-            .to(this.setProductListResponse, this.setGetProductListAPIStatus)
+            .to(this.setGetProductListAPIStatus, this.setProductListResponse)
             .catch(this.setGetProductListAPIError);
 
     }

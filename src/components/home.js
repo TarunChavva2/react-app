@@ -13,7 +13,10 @@ export default class Home extends React.Component {
               <Link to="/todos" className="home-page-nav-li">Todos</Link>
             </li>
             <li>
-              <Link to="/sign-in" className="home-page-nav-li">E-commerce</Link>
+              <Link to="/sign-in" className="home-page-nav-li">SignIn</Link>
+            </li>
+            <li>
+              <Link to="/products" className="home-page-nav-li">Products</Link>
             </li>
             {/* <li>
               <Link to="/formcomponents" className="home-page-nav-li">Form Components</Link>
@@ -27,9 +30,9 @@ export default class Home extends React.Component {
             {/* <li>
               <Link to="/GridMemoryGame" className="home-page-nav-li">GridGame</Link>
             </li> */}
-            <li>
+            {/* <li>
               <Link to="/commoncomponent" className="home-page-nav-li">Common</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

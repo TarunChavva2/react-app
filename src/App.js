@@ -16,6 +16,7 @@ import UsersPage from "./components/Userspage";
 import GridMemoryGame from "./components/Gridgame";
 import stores from "./stores";
 import SignInPage from "./Authentication/components/SignInForm";
+import ProductsPage from "./Products/components/ProductsPage";
 
 @observer class App extends React.Component {
   getCurrentTheme = () => {
@@ -33,6 +34,8 @@ import SignInPage from "./Authentication/components/SignInForm";
             <Route path="/counter-page" component={CounterPage} />
             <Route path="/todos" component={Todos} />
             <Route path="/sign-in" component={SignInPage} />
+            <Route path="/products" component={ProductsPage} />
+
             {/* <Route path="/formcomponents">
               <FormComponents />
             </Route> */}
