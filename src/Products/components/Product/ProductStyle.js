@@ -7,7 +7,7 @@ const Image = styled.img`${tw`h-48 w-9/12`}`;
 const ProductContent = styled.div`${tw`flex flex-col items-center`}`;
 const ProductName = styled.div`${tw`flex h-20 text-center`}`;
 const Installments = styled.p`${tw`text-gray-600 text-sm`}`;
-const AddToCartButton = styled.button`${tw`text-white rounded bg-gray-900 p-1 w-11/12 m-2`}`
+const AddToCartButton = styled.button`${tw`text-white rounded bg-gray-900 p-1 w-11/12 m-2 hover:bg-gray-800`}`
 
 export {
     EachProductDiv,
