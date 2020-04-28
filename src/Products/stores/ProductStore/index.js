@@ -39,8 +39,13 @@ class ProductStore {
 
     }
     @action.bound
-    onChangeSortBy() {
-
+    onChangeSortBy(value) {
+        if (value === "AscendingOrder") {
+            this.productsList = this.productsList.sort((a, b) => a.price - b.price);
+        }
+        else if (value === "DescendingOrder") {
+            this.productsList = this.productsList.sort((a, b) => b.price - a.price);
+        }
     }
     @action.bound
     onSelectSize() {

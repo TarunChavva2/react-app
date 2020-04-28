@@ -1,6 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { FiShoppingCart } from 'react-icons/fi';
+
+import ProductCart from "../../../CartModule/Components/ProductCart";
 
 import { productStore } from "../../stores";
 
@@ -8,7 +9,13 @@ import ProductList from "../ProductList";
 import Header from "../Header";
 import SizeFilter from "../SizeFilter";
 
-import { ProductsPageScreen, ProductsDisplayContainer, SideBar, MainHeader, SignOutButton } from "./ProductPageStyles";
+import {
+    ProductsPageScreen,
+    ProductsDisplayContainer,
+    SideBar,
+    MainHeader,
+    SignOutButton,
+} from "./ProductPageStyles";
 
 @observer
 class ProductsPage extends React.Component {
@@ -23,14 +30,14 @@ class ProductsPage extends React.Component {
             <div>
                 <MainHeader>
                     <SignOutButton>Sign Out</SignOutButton>
-                    <FiShoppingCart />
+                    <ProductCart />
                 </MainHeader>
                 <ProductsPageScreen>
                     <SideBar>
                         <SizeFilter />
                     </SideBar>
                     <ProductsDisplayContainer>
-                        <Header />
+                        <Header productStore={productStore} />
                         <ProductList productsList={productStore.productsList} />
                     </ProductsDisplayContainer>
                 </ProductsPageScreen>

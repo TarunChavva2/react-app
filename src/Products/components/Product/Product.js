@@ -24,7 +24,11 @@ class Product extends Component {
                     <ProductName>{title}</ProductName>
                     <hr />
                     {currencyFormat}{price}
-                    <Installments>or {installmentsCount} x {currencyFormat} {instalmentsPrice}</Installments>
+                    <Installments>
+                        {
+                            (installmentsCount !== 0) ? <span>or {installmentsCount} x {currencyFormat} {instalmentsPrice}</span> : <span>No Installments ☹️</span>
+                        }
+                    </Installments>
                     <AddToCartButton>Add to Cart</AddToCartButton>
                 </ProductContent>
             </EachProductDiv>
