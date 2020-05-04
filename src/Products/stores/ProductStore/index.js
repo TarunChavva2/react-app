@@ -5,16 +5,22 @@ import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import ProductModel from "../models/ProductModel";
 
 class ProductStore {
-    @observable getProductListAPIStatus = API_INITIAL;
-    @observable getProductListAPIError = null;
+    @observable getProductListAPIStatus;
+    @observable getProductListAPIError;
     @observable sizeFilter;
     @observable sortBy;
-    @observable productsList = [];
+    @observable productsList;
     productsAPIService;
     constructor(productService) {
         this.productsAPIService = productService;
-        this.sizeFilter = ["XS", "S", "M", "L", "XL", "XXL"];
+        this.init();
+    }
+    init = () => {
+        this.getProductListAPIStatus = API_INITIAL;
+        this.getProductListAPIError = null;
+        this.sizeFilter = [];
         this.sortBy = "SELECT";
+        this.productsList = [];
     }
     @action.bound
     setProductListResponse(response) {
@@ -50,6 +56,10 @@ class ProductStore {
     @action.bound
     onSelectSize() {
 
+    }
+    @action.bound
+    clearStore = () => {
+        this.init()
     }
 }
 

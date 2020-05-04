@@ -9,14 +9,16 @@ import { Todos } from "./components/react-todos";
 import { TodoApp } from './components/MobxTodos'
 import Countrydetailscard from './components/assignment-4/country-details-card.js';
 import { Header } from './components/assignment-4/header.js';
-import FormComponents from "./components/FormComponents/FormComponents.js";
+// import FormComponents from "./components/FormComponents/FormComponents.js";
 import { Countriesdashboard } from "./components/assignment-4/countriescomponent.js";
 import themeStore from './stores/themestore';
 import UsersPage from "./components/Userspage";
-import GridMemoryGame from "./components/Gridgame";
+// import GridMemoryGame from "./components/Gridgame";
 import stores from "./stores";
 import SignInPage from "./Authentication/components/SignInForm";
 import ProductsPage from "./Products/components/ProductsPage";
+import EcommerceStore from "./common/stores";
+import authRoutes from "./Authentication/routes";
 
 @observer class App extends React.Component {
   getCurrentTheme = () => {
@@ -28,13 +30,15 @@ import ProductsPage from "./Products/components/ProductsPage";
   }
   render() {
     return (
-      <Provider {...stores}>
+      <Provider {...stores}{...EcommerceStore}>
         <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path="/counter-page" component={CounterPage} />
             <Route path="/todos" component={Todos} />
-            <Route path="/sign-in" component={SignInPage} />
             <Route path="/products" component={ProductsPage} />
+            {authRoutes}
+
+
 
             {/* <Route path="/formcomponents">
               <FormComponents />

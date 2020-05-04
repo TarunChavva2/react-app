@@ -1,9 +1,11 @@
+import { Redirect, withRouter } from "react-router-dom";
 import React from "react";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 
+import { getAccessToken } from "../../../utils/StorageUtils";
 import ProductCart from "../../../CartModule/Components/ProductCart";
+import { SIGNIN_PAGE_PATH } from "../../../Authentication/constants/RouteConstants";
 
-import { productStore } from "../../stores";
 
 import ProductList from "../ProductList";
 import Header from "../Header";
@@ -17,19 +19,30 @@ import {
     SignOutButton,
 } from "./ProductPageStyles";
 
+@inject("productStore", "authStore")
 @observer
 class ProductsPage extends React.Component {
     componentDidMount() {
-        productStore.getProductList();
+        if (getAccessToken() === undefined) {
+            this.redirectToLoginPage();
+        }
+        this.props.productStore.getProductList();
     }
     onClickSignOut = () => {
-
+        this.props.productStore.clearStore();
+        this.props.authStore.userSignOut();
+        this.redirectToLoginPage();
+    }
+    redirectToLoginPage = () => {
+        const { history } = this.props;
+        history.replace({ pathname: SIGNIN_PAGE_PATH });
     }
     render() {
+        const { productStore } = this.props;
         return (
             <div>
                 <MainHeader>
-                    <SignOutButton>Sign Out</SignOutButton>
+                    <SignOutButton onClick={this.onClickSignOut}>Sign Out</SignOutButton>
                     <ProductCart />
                 </MainHeader>
                 <ProductsPageScreen>
@@ -46,4 +59,4 @@ class ProductsPage extends React.Component {
     }
 }
 
-export { ProductsPage };
+export default withRouter(ProductsPage);

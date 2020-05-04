@@ -1,10 +1,10 @@
 import React from "react";
+import { Redirect, withRouter } from "react-router-dom";
 import { SignInDiv, UserName, UserPassword, SignInButton, Heading, ShowErrorMessage } from "./SignInStyles";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import { observable } from "mobx";
 
-import { authStore } from "../../stores";
-
+@inject("authStore")
 @observer
 class SignInPage extends React.Component {
     @observable username;
@@ -14,7 +14,7 @@ class SignInPage extends React.Component {
         super();
         this.username = "";
         this.password = "";
-        this.errorMessage = "";
+        this.errorMessage = null;
     }
 
     onChangeUsername = (event) => {
@@ -24,35 +24,49 @@ class SignInPage extends React.Component {
         this.password = event.target.value;
     }
 
-    onClickSignIn = () => {
+    onClickSignIn = (event) => {
+        event.preventDefault();
         if (this.username === "") {
             const UserNameError = "Enter UserName";
             this.errorMessage = UserNameError;
         }
-        if (this.password === "") {
+        else if (this.password === "") {
             const PasswordError = "Enter Password";
             this.errorMessage = PasswordError;
         }
-        else if (this.errorMessage === "") {
-            authStore.userSignIn();
+        else {
+            this.errorMessage = "";
+            this.props.authStore.userSignIn();
+            setTimeout(() => {
+
+                this.redirectToProductPage();
+            }, 1000);
+
         }
     }
-    formAction = (event) => {
-        event.preventDefault();
+    redirectToProductPage = () => {
+        const { history } = this.props;
+        history.replace({ pathname: "/products" })
     }
+
     render() {
+
+        // if (getAccessToken() !== undefined) {
+        //     this.redirectToProductPage();
+        // }
         return (
-            <form onSubmit={this.formAction}>
+            <form >
                 <SignInDiv>
                     <Heading>User SignIn</Heading>
-                    <UserName placeholder="UserName" type="text" onChange={this.onChangeUsername} />
-                    <UserPassword placeholder="Password" type="password" onChange={this.onChangePassword} />
+                    <UserName placeholder="UserName" type="text" onChange={this.onChangeUsername} value={this.username} />
+                    <UserPassword placeholder="Password" type="password" onChange={this.onChangePassword} value={this.password} />
                     <SignInButton type="submit" onClick={this.onClickSignIn}>Sign In</SignInButton>
-                    <ShowErrorMessage>{this.errorMessage === "" ? this.errorMessage = "" : this.errorMessage}</ShowErrorMessage>
+                    <ShowErrorMessage>{this.errorMessage}</ShowErrorMessage>
                 </SignInDiv>
             </form>
         )
     }
+
 }
 
-export { SignInPage };
+export default withRouter(SignInPage);
