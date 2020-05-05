@@ -15,7 +15,7 @@ import themeStore from './stores/themestore';
 import UsersPage from "./components/Userspage";
 // import GridMemoryGame from "./components/Gridgame";
 import stores from "./stores";
-import SignInPage from "./Authentication/components/SignInForm";
+// import SignInPage from "./Authentication/components/SignInForm";
 import ProductsPage from "./Products/components/ProductsPage";
 import EcommerceStore from "./common/stores";
 import authRoutes from "./Authentication/routes";
@@ -37,15 +37,6 @@ import authRoutes from "./Authentication/routes";
             <Route path="/todos" component={Todos} />
             <Route path="/products" component={ProductsPage} />
             {authRoutes}
-
-
-
-            {/* <Route path="/formcomponents">
-              <FormComponents />
-            </Route> */}
-            {/* <Route path="/GridMemoryGame">
-              <GridMemoryGame />
-            </Route> */}
             <Route path="/mobxtodo" component={TodoApp} />
             <Route path="/commoncomponent" component={UsersPage} />
             <Route path="/countrieslist">
