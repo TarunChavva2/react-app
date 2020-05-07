@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { SignInDiv, UserName, UserPassword, SignInButton, Heading, ShowErrorMessage } from "./SignInStyles";
 import { observer, inject } from "mobx-react";
 import { observable } from "mobx";
@@ -38,7 +38,6 @@ class SignInPage extends React.Component {
             this.errorMessage = "";
             this.props.authStore.userSignIn();
             setTimeout(() => {
-
                 this.redirectToProductPage();
             }, 1000);
 
@@ -50,10 +49,6 @@ class SignInPage extends React.Component {
     }
 
     render() {
-
-        // if (getAccessToken() !== undefined) {
-        //     this.redirectToProductPage();
-        // }
         return (
             <form >
                 <SignInDiv>

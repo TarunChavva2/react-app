@@ -12,7 +12,7 @@ class ProductSort extends Component {
         return (
             <SortingDiv>Sort Price by:
                 <ItemsSortDropDown onChange={this.onSelectSortBy}>
-                    <option>Select</option>
+                    <option hidden>Select</option>
                     <option value="AscendingOrder">Lowest to Highest</option>
                     <option value="DescendingOrder">Highest to Lowest</option>
                 </ItemsSortDropDown>

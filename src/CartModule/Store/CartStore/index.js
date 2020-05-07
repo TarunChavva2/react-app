@@ -7,7 +7,7 @@ class CartStore {
         this.cartProductList = new Map();
     }
     onClickAddToCart = () => {
-        alert("added to cartstore");
+        alert("added");
     }
     onRemoveCartItem = () => {
 
