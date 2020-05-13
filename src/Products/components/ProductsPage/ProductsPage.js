@@ -40,7 +40,7 @@ class ProductsPage extends React.Component {
     render() {
         const { productStore } = this.props;
         return (
-            <div>
+            <>
                 <MainHeader>
                     <SignOutButton onClick={this.onClickSignOut}>Sign Out</SignOutButton>
                     <ProductCart />
@@ -54,7 +54,7 @@ class ProductsPage extends React.Component {
                         <ProductList productsList={productStore.productsList} />
                     </ProductsDisplayContainer>
                 </ProductsPageScreen>
-            </div>
+            </>
         )
     }
 }
