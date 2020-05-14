@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { SIGNIN_PAGE_PATH } from "../Authentication/constants/RouteConstants";
+
 export default class Home extends React.Component {
   render() {
     return (
@@ -12,9 +14,9 @@ export default class Home extends React.Component {
             <li>
               <Link to="/todos" className="home-page-nav-li">Todos</Link>
             </li>
-            <li>
-              <Link to="/sign-in" className="home-page-nav-li">SignIn</Link>
-            </li>
+            {/* <li>
+              <Link to={SIGNIN_PAGE_PATH} className="home-page-nav-li">SignIn</Link>
+            </li> */}
             <li>
               <Link to="/products" className="home-page-nav-li">Products</Link>
             </li>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import {
     EachProductDiv,
     FreeShippingDiv,
@@ -9,12 +8,16 @@ import {
     Installments,
     AddToCartButton
 } from './ProductStyle';
+import { inject } from "mobx-react";
 
+@inject("cartStore", "authStore", "productStore")
 class Product extends Component {
+    onClickAddToCart = () => {
+        this.props.cartStore.onClickAddToCart();
+    }
     render() {
         const { eachProduct } = this.props;
         const { price, installmentsCount, currencyFormat, title, isFreeShipping, imageURL } = eachProduct;
-        console.log(eachProduct);
         const instalmentsPrice = (price / installmentsCount).toFixed(2);
         return (
             <EachProductDiv>
@@ -22,10 +25,13 @@ class Product extends Component {
                 <Image src={imageURL} />
                 <ProductContent>
                     <ProductName>{title}</ProductName>
-                    <hr />
                     {currencyFormat}{price}
-                    <Installments>or {installmentsCount} x {currencyFormat} {instalmentsPrice}</Installments>
-                    <AddToCartButton>Add to Cart</AddToCartButton>
+                    <Installments>
+                        {
+                            (installmentsCount !== 0) ? <span>or {installmentsCount} x {currencyFormat} {instalmentsPrice}</span> : <span>No Installments ☹️</span>
+                        }
+                    </Installments>
+                    <AddToCartButton onClick={this.onClickAddToCart}>Add to Cart</AddToCartButton>
                 </ProductContent>
             </EachProductDiv>
         )

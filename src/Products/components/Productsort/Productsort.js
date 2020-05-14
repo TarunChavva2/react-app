@@ -4,15 +4,17 @@ import { SortingDiv, ItemsSortDropDown } from "./ProductsortStyle";
 
 class ProductSort extends Component {
     onSelectSortBy = (event) => {
-        alert(event.target.value);
+        const { value } = event.target;
+        const { productStore } = this.props;
+        productStore.onChangeSortBy(value);
     }
     render() {
         return (
             <SortingDiv>Sort Price by:
                 <ItemsSortDropDown onChange={this.onSelectSortBy}>
-                    <option>Select</option>
-                    <option value="Lowest to Highest">Lowest to Highest</option>
-                    <option value="Highest to Lowest">Highest to Lowest</option>
+                    <option hidden>Select</option>
+                    <option value="AscendingOrder">Lowest to Highest</option>
+                    <option value="DescendingOrder">Highest to Lowest</option>
                 </ItemsSortDropDown>
             </SortingDiv>
         )
