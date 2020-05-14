@@ -21,6 +21,7 @@ import EcommerceStore from "./common/stores";
 import authRoutes from "./Authentication/routes";
 
 @observer class App extends React.Component {
+
   getCurrentTheme = () => {
     return themeStore.themeOption;
   }
