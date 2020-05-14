@@ -36,17 +36,13 @@ import authRoutes from "./Authentication/routes";
             <Route path="/counter-page" component={CounterPage} />
             <Route path="/todos" component={Todos} />
             <Route path="/products" component={ProductsPage} />
-<<<<<<< HEAD
-
             {/* <Route path="/formcomponents">
               <FormComponents />
             </Route> */}
             <Route path="/GridMemoryGame">
               <GridMemoryGame />
             </Route>
-=======
             {authRoutes}
->>>>>>> 5a5577cdba8fbc9f649081c9d091a4fdbeb21e48
             <Route path="/mobxtodo" component={TodoApp} />
             <Route path="/commoncomponent" component={UsersPage} />
             <Route path="/countrieslist">
