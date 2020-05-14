@@ -39,9 +39,9 @@ import ProductsPage from "./Products/components/ProductsPage";
             {/* <Route path="/formcomponents">
               <FormComponents />
             </Route> */}
-            {/* <Route path="/GridMemoryGame">
+            <Route path="/GridMemoryGame">
               <GridMemoryGame />
-            </Route> */}
+            </Route>
             <Route path="/mobxtodo" component={TodoApp} />
             <Route path="/commoncomponent" component={UsersPage} />
             <Route path="/countrieslist">
@@ -60,10 +60,3 @@ import ProductsPage from "./Products/components/ProductsPage";
   }
 }
 export default App;
-
-
-
-
-
-
-
