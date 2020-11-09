@@ -20,8 +20,8 @@ import ProductsPage from "./Products/components/ProductsPage";
 import EcommerceStore from "./common/stores";
 import authRoutes from "./Authentication/routes";
 
-@observer class App extends React.Component {
-
+@observer
+class App extends React.Component {
   getCurrentTheme = () => {
     return themeStore.themeOption;
   }
@@ -36,14 +36,14 @@ import authRoutes from "./Authentication/routes";
           <Switch>
             <Route path="/counter-page" component={CounterPage} />
             <Route path="/todos" component={Todos} />
+            {authRoutes}
             <Route path="/products" component={ProductsPage} />
             {/* <Route path="/formcomponents">
               <FormComponents />
             </Route> */}
-            <Route path="/GridMemoryGame">
+            {/* <Route path="/GridMemoryGame">
               <GridMemoryGame />
-            </Route>
-            {authRoutes}
+            </Route> */}
             <Route path="/mobxtodo" component={TodoApp} />
             <Route path="/commoncomponent" component={UsersPage} />
             <Route path="/countrieslist">

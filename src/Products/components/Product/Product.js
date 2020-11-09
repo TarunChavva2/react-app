@@ -13,7 +13,8 @@ import { inject } from "mobx-react";
 @inject("cartStore", "authStore", "productStore")
 class Product extends Component {
     onClickAddToCart = () => {
-        this.props.cartStore.onClickAddToCart();
+        const { eachProduct } = this.props;
+        this.props.cartStore.onClickAddToCart(eachProduct);
     }
     render() {
         const { eachProduct } = this.props;
@@ -25,7 +26,7 @@ class Product extends Component {
                 <Image src={imageURL} />
                 <ProductContent>
                     <ProductName>{title}</ProductName>
-                    {currencyFormat}{price}
+                    {currencyFormat} {price}
                     <Installments>
                         {
                             (installmentsCount !== 0) ? <span>or {installmentsCount} x {currencyFormat} {instalmentsPrice}</span> : <span>No Installments ☹️</span>

@@ -1,13 +1,17 @@
-import { observable } from "mobx";
+import { observable, toJS } from "mobx";
+
+import CartItemModel from "../model/cartModel";
 
 class CartStore {
     @observable cartProductList;
     @observable productStore;
     constructor() {
-        this.cartProductList = new Map();
+        this.cartProductList = [];
     }
-    onClickAddToCart = () => {
-        alert("added");
+    onClickAddToCart = (eachProduct) => {
+        const EachProduct = new CartItemModel(eachProduct);
+        this.cartProductList.push(EachProduct);
+        // console.log("cartstore", toJS(this.cartProductList));
     }
     onRemoveCartItem = () => {
 

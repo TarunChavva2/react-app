@@ -32,8 +32,6 @@ class AuthStore {
     userSignOut() {
         this.init();
         clearUserSession();
-        console.log("log out");
-
     }
 
     userSignIn(requestObject, onSuccess, onFailure) {

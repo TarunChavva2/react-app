@@ -1,5 +1,6 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { toJS } from "mobx";
 
 @observer
 class CartItem extends Component {
@@ -7,7 +8,12 @@ class CartItem extends Component {
 
     }
     render() {
-        return ()
+        console.log("cartItem", toJS(this.props));
+        return (
+            <div>
+
+            </div>
+        )
     }
 }
 

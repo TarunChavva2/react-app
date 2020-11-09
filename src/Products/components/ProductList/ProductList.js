@@ -9,7 +9,7 @@ class ProductList extends Component {
         const { productsList } = this.props;
         return (
             <ProductListDiv>
-                {productsList.map((eachProduct) => <Product eachProduct={eachProduct} />)}
+                {productsList.map((eachProduct) => <Product eachProduct={eachProduct} key={eachProduct.productId} />)}
             </ProductListDiv>
         )
     }
